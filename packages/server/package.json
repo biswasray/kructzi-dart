@@ -1,5 +1,5 @@
 {
-  "name": "@aparage-health/server",
+  "name": "@kructzi-dart/server",
   "version": "1.0.0",
   "description": "",
   "module": "./dist/index.js",
@@ -36,10 +36,10 @@
     "prettier": "^2.8.7",
     "ts-jest": "^29.1.2",
     "ts-node": "^10.9.1",
-    "typescript": "^5"
+    "typescript": "5.0"
   },
   "dependencies": {
-    "@aparage-health/universe": "1.0.0",
+    "@kructzi-dart/universe": "1.0.0",
     "cors": "^2.8.5",
     "crypto-js": "^4.2.0",
     "express": "^4.19.2",

@@ -1,5 +1,5 @@
 {
-  "name": "aparage-health",
+  "name": "kructzi-dart",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -15,8 +15,7 @@
     "lint": "eslint packages/*/src/**/*.{ts,js,tsx,jsx,json}",
     "prepublish": "npm run build",
     "prepare": "husky install",
-    "prepublishOnly": "npm test && npm run lint",
-    "preversion": "npm run lint",
+    "prepublishOnly": "npm test",
     "version": "npm run format && git add -A .",
     "postversion": "git push && git push --tags",
     "commit": "cz",

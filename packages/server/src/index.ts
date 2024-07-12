@@ -1,16 +1,32 @@
-import { add, environment } from "@aparage-health/universe";
+import {
+  ExpressErrorHandler,
+  environment,
+  getIp4Addresses,
+  logger,
+} from "@kructzi-dart/universe";
 import express from "express";
-import { sequelize } from "./models";
-// import { config } from "dotenv";
-// import { add } from "@aparage-health/universe";
-// config();
+import BaseService from "./services/base";
+
 const app = express();
 const PORT = environment.NODE_PORT;
 
 app.all("*", (req, res) => {
-  res.json({ sum: add(20, 4) });
+  res.send("Running");
 });
-sequelize;
+
+app.use(
+  ExpressErrorHandler(true, () => {
+    const transaction = BaseService.GetTransaction();
+    transaction?.rollback();
+  }),
+);
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}.`);
+  const ips = getIp4Addresses();
+  logger.info(
+    `Listening on...\n${
+      ips.length
+        ? ips.map((ip) => `http://${ip}:${PORT}`).join("\n")
+        : `http://127.0.0.1:${PORT}`
+    }`,
+  );
 });

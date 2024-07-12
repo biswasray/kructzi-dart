@@ -1,6 +1,7 @@
 import { Sequelize } from "sequelize";
-// import { initModels } from "./init_models";
-import { environment } from "@aparage-health/universe";
+import { initModels } from "./init_models";
+import { environment } from "@kructzi-dart/universe";
+import BaseService from "@/services/base";
 
 export const sequelize = new Sequelize({
   // host: "0.0.0.0" || "postgresdb",
@@ -15,14 +16,20 @@ export const sequelize = new Sequelize({
 // sequelize.sync({ force: true });
 sequelize.authenticate();
 
-// export const models = initModels(sequelize);
+export const models = initModels(sequelize);
 
-// function modelSelector<K extends keyof typeof models>(
-//   key: K,
-// ): (typeof models)[K] {
-//   return models[key];
-// }
+function modelSelector<K extends keyof typeof models>(
+  key: K,
+): (typeof models)[K] {
+  return models[key];
+}
 
-// const Models = Object.assign(modelSelector, {});
+const Models = Object.assign(modelSelector, {
+  async transaction() {
+    const transaction = await sequelize.transaction();
+    BaseService.SetTransaction(transaction);
+    return transaction;
+  },
+});
 
-// export default Models;
+export default Models;

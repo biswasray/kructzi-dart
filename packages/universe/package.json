@@ -1,5 +1,5 @@
 {
-  "name": "@aparage-health/universe",
+  "name": "@kructzi-dart/universe",
   "version": "1.0.0",
   "description": "",
   "module": "./dist/index.js",
@@ -12,7 +12,7 @@
     "build": "tsc -b ./tsconfig.json"
   },
   "devDependencies": {
-    "typescript": "^5"
+    "typescript": "5.0"
   },
   "dependencies": {
     "dotenv": "^16.4.5",
