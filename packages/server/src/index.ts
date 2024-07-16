@@ -10,7 +10,7 @@ import BaseService from "./services/base";
 const app = express();
 const PORT = environment.NODE_PORT;
 
-app.all("*", (req, res) => {
+app.all("*", async (req, res) => {
   res.send("Running");
 });
 
@@ -20,6 +20,7 @@ app.use(
     transaction?.rollback();
   }),
 );
+
 app.listen(PORT, () => {
   const ips = getIp4Addresses();
   logger.info(

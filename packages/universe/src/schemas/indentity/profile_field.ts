@@ -7,6 +7,7 @@ export const profileFieldCreateEntity = z.object({
   desc: z.string().nullish(),
   sequence: z.number(),
   columnLookupCode: z.string(),
+  isRequired: z.boolean(),
   staticOptions: z.string().nullish(),
   refLookupTypeId: zuuid().nullish(),
 });

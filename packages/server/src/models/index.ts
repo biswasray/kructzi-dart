@@ -1,7 +1,7 @@
 import { Sequelize } from "sequelize";
 import { initModels } from "./init_models";
 import { environment } from "@kructzi-dart/universe";
-import BaseService from "@/services/base";
+import BaseService from "../services/base";
 
 export const sequelize = new Sequelize({
   // host: "0.0.0.0" || "postgresdb",

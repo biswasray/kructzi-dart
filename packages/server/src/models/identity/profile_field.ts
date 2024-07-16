@@ -14,6 +14,7 @@ export class ProfileField
   columnLookupCode!: string;
   staticOptions?: string | null | undefined;
   refLookupTypeId?: UUID | null | undefined;
+  isRequired!: boolean;
   id!: UUID;
   isActive!: boolean;
   createdAt!: Date;
@@ -56,6 +57,10 @@ export class ProfileField
         refLookupTypeId: {
           type: DataTypes.UUID,
           allowNull: true,
+        },
+        isRequired: {
+          type: DataTypes.BOOLEAN,
+          allowNull: false,
         },
         isActive: {
           type: DataTypes.BOOLEAN,
